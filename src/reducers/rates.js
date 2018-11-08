@@ -6,6 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        // Reset to initia state and turn on loading status
         case 'FETCH_RATES': {
             return Object.assign({}, initialState, {
                 loading: true,
