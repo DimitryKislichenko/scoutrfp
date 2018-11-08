@@ -6,7 +6,7 @@ import RateItem from './RateItem';
 import RatesStatus from './RatesStatus';
 
 const RatesList = ({ date, base, rates }) => (
-    <Table striped>
+    <Table fixed striped>
         <Table.Header>
             <Table.Row>
                 <Table.HeaderCell colSpan={2} textAlign="center">
