@@ -1,5 +1,10 @@
-import React from "react";
+import React from 'react';
+import { ReduxProvider } from '../providers';
 
-const App = () => <div>HELLO WORDL</div>;
+const App = () => (
+    <ReduxProvider>
+        <div>HELLO WORDL</div>
+    </ReduxProvider>
+);
 
 export default App;
