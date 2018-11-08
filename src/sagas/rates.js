@@ -1,15 +1,14 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
 
-const RATES_API_URL = 'https://api.exchangeratesapi.io/latest';
+export const RATES_API_URL = 'https://api.exchangeratesapi.io/latest';
 
 /**
  * Fetch exchange rates and place them in redux cache.
  */
 export function* fetchRatesAsync() {
     try {
-        const rates = yield fetch(RATES_API_URL).then(response =>
-            response.json(),
-        );
+        const response = yield call(fetch, RATES_API_URL);
+        const rates = yield call([response, 'json']);
 
         yield put({ type: 'FETCH_RATES_SUCCESS', rates });
     } catch (error) {
