@@ -14,7 +14,7 @@ const normalizeRates = withProps(({ error, rates }) => {
     return {
         date: rates.date,
         base: rates.base,
-        rates: map(entries(rates.rates), ([rate, code]) => ({
+        rates: map(entries(rates.rates), ([code, rate]) => ({
             code,
             rate,
         })),
