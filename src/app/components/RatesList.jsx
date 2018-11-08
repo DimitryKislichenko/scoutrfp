@@ -1,10 +1,12 @@
 import React from 'react';
 import { compose, branch, renderComponent } from 'recompose';
 import { map, isEmpty } from 'lodash';
-import { Table, Loader, Message } from 'semantic-ui-react';
+import { Table, Loader } from 'semantic-ui-react';
 
 import RateItem from './RateItem';
 import RatesStatus from './RatesStatus';
+import ErrorMessage from './ErrorMessage';
+import EmptyMessage from './EmptyMessage';
 
 const RatesList = ({ date, base, rates }) => (
     <Table fixed striped>
@@ -34,15 +36,6 @@ const Spinner = () => (
     <Loader size="big" content="Loading, please wait..." active />
 );
 
-/**
- * Message to show if provided list of rates is empty
- */
-const EmptyMessage = () => (
-    <Message warning>
-        List of rates is empty, try to click refresh button
-    </Message>
-);
-
 // Show spinner while loading list of rates
 const withSpinner = branch(({ loading }) => loading, renderComponent(Spinner));
 
@@ -52,7 +45,16 @@ const withEmptyMessage = branch(
     renderComponent(EmptyMessage),
 );
 
+/**
+ * Show error message if there is any
+ */
+const withErrorMessage = branch(
+    ({ error }) => !!error,
+    renderComponent(({ error }) => <ErrorMessage reason={error} />),
+);
+
 export default compose(
     withSpinner,
+    withErrorMessage,
     withEmptyMessage,
 )(RatesList);
