@@ -8,6 +8,6 @@ const fetchRates = () => ({
 });
 
 export default connect(
-    null,
+    ({ rates }) => ({ loading: rates.loading }),
     { onClick: fetchRates },
 )(FetchButton);
