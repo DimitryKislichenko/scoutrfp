@@ -5,7 +5,7 @@ import { throwError } from 'redux-saga-test-plan/providers';
 import { fetchRatesAsync } from '../rates';
 
 describe('fetchRatesAsync', () => {
-    it('shuld log an error if it failed to fetch rates', () => {
+    it('shuld log an error, if it failed to fetch rates', () => {
         const error = new Error('Some error');
 
         return expectSaga(fetchRatesAsync)
