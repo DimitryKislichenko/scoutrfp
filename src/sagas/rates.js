@@ -13,7 +13,7 @@ export function* fetchRatesAsync() {
 
         yield put({ type: 'FETCH_RATES_SUCCESS', rates });
     } catch (error) {
-        yield put({ type: 'FETCH_RATES_ERROR', error });
+        yield put({ type: 'FETCH_RATES_ERROR', error: error.message });
     }
 }
 
