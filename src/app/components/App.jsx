@@ -1,15 +1,16 @@
 import React from 'react';
-import { ReduxProvider } from '../../providers';
+import { Container } from 'semantic-ui-react';
 
+import { ReduxProvider } from '../../providers';
 import RatesList from '../containers/RatesList';
 import FetchButton from '../containers/FetchButton';
 
 const App = () => (
     <ReduxProvider>
-        <div>
+        <Container>
             <FetchButton />
             <RatesList />
-        </div>
+        </Container>
     </ReduxProvider>
 );
 
