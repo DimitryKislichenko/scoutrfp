@@ -30,7 +30,7 @@ const RatesList = ({ date, base, rates }) => (
 );
 
 /**
- * Spinner to show whole loading list of rates
+ * Spinner to show while loading list of rates
  */
 const Spinner = () => (
     <Loader size="big" content="Loading, please wait..." active />
@@ -45,9 +45,7 @@ const withEmptyMessage = branch(
     renderComponent(EmptyMessage),
 );
 
-/**
- * Show error message if there is any
- */
+// Show error message if there is any
 const withErrorMessage = branch(
     ({ error }) => !!error,
     renderComponent(({ error }) => <ErrorMessage reason={error} />),

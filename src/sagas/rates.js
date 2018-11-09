@@ -1,6 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 
-export const RATES_API_URL = 'https://api.exchangeratesapi.io/latest';
+const RATES_API_URL = 'https://api.exchangeratesapi.io/latest';
 
 /**
  * Fetch exchange rates and place them in redux cache.
